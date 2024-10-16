@@ -9,6 +9,48 @@
     <title>Tic Tac Toe</title>
 </head>
 <body>
-    
+    <header>
+
+        <h1 class="heading">Tic Tac Toe</h1>
+        <p class="sub-heading">First player to get 3 in a row wins!</p>
+
+    </header>
+    <main>
+
+        <div class="playerNamesContainer">
+            <p class="playerNamesHeading">Enter the players names...</p>
+            <div class="playerNamesInputContainer">
+                <label for="playerXName">Player X</label>
+                <input type="text" id="playerXName" name="playerXName">
+                <label for="playerOName">Player O</label>
+                <input type="text" id="playerOName" name="playerOName">
+            </div>
+        </div>
+
+        <div class="buttonContainer">
+            <button type="button" id="startGame" value="startGame">Start</button>
+            <div class="statement"></div>
+            <button type="button" id="resetGame" value="resetGame">Reset</button>
+        </div>
+        
+        <div class="gameboard">
+            <div class="gameboardRow">
+                <div class="gameBox" id="gameBox11"></div>
+                <div class="gameBox" id="gameBox12"></div>
+                <div class="gameBox" id="gameBox13"></div>
+            </div>
+            <div class="gameboardRow">
+                <div class="gameBox" id="gameBox21"></div>
+                <div class="gameBox" id="gameBox22"></div>
+                <div class="gameBox" id="gameBox23"></div>
+            </div>
+            <div class="gameboardRow">
+                <div class="gameBox" id="gameBox31"></div>
+                <div class="gameBox" id="gameBox32"></div>
+                <div class="gameBox" id="gameBox33"></div>
+            </div>
+        </div>
+    </main>
+
 </body>
 </html>
