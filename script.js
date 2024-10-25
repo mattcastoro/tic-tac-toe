@@ -25,7 +25,7 @@
                 playerX = document.querySelector("#playerXName").value;
                 playerO = document.querySelector("#playerOName").value;
                 displayStatement.textContent = `${playerX}'s turn...`;
-                displayStatement.style.backgroundColor = "#21B0DE";
+                displayStatement.style.backgroundColor = "var(--xPlayer-clr)";
             }
     }
 
@@ -46,7 +46,7 @@
         gameboard.xKey = new Array();
         gameboard.oKey = new Array();
         displayStatement.textContent = `${playerX}'s turn...`;
-        displayStatement.style.backgroundColor = "#21B0DE";
+        displayStatement.style.backgroundColor = "var(--xPlayer-clr)";
         boxArray.forEach(element => {
             element.textContent = "";
             element.style.pointerEvents = "";
@@ -69,7 +69,7 @@
     4. calls gameResult function with player's array
      */
     const boxArray = document.querySelectorAll(".gameBox");
-    let disableMouseLeave = false;
+    let disableMouseLeave = false; // initialize to false so mouseleave executes
     boxArray.forEach((btn) => {
         btn.addEventListener("click", (event) => {
             disableMouseLeave = true;
@@ -77,7 +77,7 @@
                 const xEl = document.getElementById(event.target.id);
                 xEl.textContent = "X";
                 xEl.style.pointerEvents = "none";
-                xEl.style.backgroundColor = "#21B0DE";
+                xEl.style.backgroundColor = "var(--xPlayer-clr)";
                 console.log("X");
                 gameboard.xKey.push(event.target.id);
                 gameResult(gameboard.xKey);
@@ -85,7 +85,7 @@
                 const oEl = document.getElementById(event.target.id);
                 oEl.textContent = "O";
                 oEl.style.pointerEvents = "none";
-                oEl.style.backgroundColor = "#DE4F21";
+                oEl.style.backgroundColor = "var(--oPlayer-clr)";
                 console.log("O");
                 gameboard.oKey.push(event.target.id);
                 gameResult(gameboard.oKey);
@@ -94,23 +94,24 @@
         })
     })
 
+    /* 
+    1. listens for mouseenter/mouseleave
+    2. changes backgroundColor upon respective event */
     boxArray.forEach((box) => {
         box.addEventListener("mouseenter", (event) => {
             if (displayStatement.textContent == `${playerX}'s turn...`) {
                 const xEl = document.getElementById(event.target.id);
-                xEl.style.backgroundColor = "#21B0DE";
+                xEl.style.backgroundColor = "var(--xPlayer-clr)";
             } else if (displayStatement.textContent == `${playerO}'s turn...`) {
                 const oEl = document.getElementById(event.target.id);
-                oEl.style.backgroundColor = "#DE4F21";
+                oEl.style.backgroundColor = "var(--oPlayer-clr)";
             }
         })
     })
-
     boxArray.forEach((box) => {
         box.addEventListener("mouseleave", (event) => {
-            if (disableMouseLeave) {
-                event.preventDefault();
-                disableMouseLeave = false;
+            if (disableMouseLeave) { // click event causes true
+                disableMouseLeave = false; // return variable to false
             } else if (displayStatement.textContent == `${playerX}'s turn...`) {
                     const xEl = document.getElementById(event.target.id);
                     xEl.style.backgroundColor = "";
@@ -120,7 +121,6 @@
             }
         })
     })
-    
 
     /* 
     1. provides an array of winning combinations
@@ -146,13 +146,13 @@
         if (maybeWinner(playerSelections) === true) {
         } else if (tieGame() === true) {
             displayStatement.textContent = "It's a tie...";
-            displayStatement.style.backgroundColor = "yellow";
+            displayStatement.style.backgroundColor = "var(--tieGame-clr)";
         } else if (displayStatement.textContent == `${playerX}'s turn...`) {
             displayStatement.textContent = `${playerO}'s turn...`;
-            displayStatement.style.backgroundColor = "#DE4F21";
+            displayStatement.style.backgroundColor = "var(--oPlayer-clr)";
         } else if (displayStatement.textContent == `${playerO}'s turn...`) {
             displayStatement.textContent = `${playerX}'s turn...`;
-            displayStatement.style.backgroundColor = "#21B0DE";
+            displayStatement.style.backgroundColor = "var(--xPlayer-clr)";
         }
     }
 
@@ -166,13 +166,13 @@
             if (winningCombos[i].every(j => playerSelections.includes(j)) === true) {
                 if (displayStatement.textContent == `${playerX}'s turn...`) {
                     displayStatement.textContent = `${playerX} WINS!!!`;
-                    displayStatement.style.backgroundColor = "#21B0DE";
+                    displayStatement.style.backgroundColor = "var(--xPlayer-clr)";
                     boxArray.forEach(element => {
                         element.style.pointerEvents = "none";
                     })
                 } else {
                     displayStatement.textContent = `${playerO} WINS!!!`;
-                    displayStatement.style.backgroundColor = "#DE4F21";
+                    displayStatement.style.backgroundColor = "var(--oPlayer-clr)";
                     boxArray.forEach(element => {
                         element.style.pointerEvents = "none";
                     })

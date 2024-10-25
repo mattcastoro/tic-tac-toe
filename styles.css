@@ -1,5 +1,9 @@
 *, *::before, *::after {
     box-sizing: border-box;
+    --xPlayer-clr: #6BA0FF;
+    --oPlayer-clr: #FFCB6B;
+    --tieGame-clr: #6BE9FF;
+    --bg-clr: #FFF5F9;
   }
 
 * {
@@ -13,7 +17,7 @@ body {
     display: grid;
     justify-items: center;
     gap: 10px;
-    /* background-color: #F9FDFE; */
+    background-color: var(--bg-clr);
 }
 
 img, picture, video, canvas, svg {
@@ -73,11 +77,11 @@ input:focus {
 }
 
 #playerXName:valid {
-    background-color: #21B0DE;
+    background-color: var(--xPlayer-clr);
 }
 
 #playerOName:valid {
-    background-color: #DE4F21;
+    background-color: var(--oPlayer-clr);
 }
 
 .buttonContainer {
