@@ -13,6 +13,7 @@ body {
     display: grid;
     justify-items: center;
     gap: 10px;
+    /* background-color: #F9FDFE; */
 }
 
 img, picture, video, canvas, svg {
@@ -71,9 +72,18 @@ input:focus {
     border: 2px solid black;
 }
 
+#playerXName:valid {
+    background-color: #21B0DE;
+}
+
+#playerOName:valid {
+    background-color: #DE4F21;
+}
+
 .buttonContainer {
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 button {
@@ -95,9 +105,11 @@ button:hover {
 }
 
 .statement {
-    color: red;
+    color: black;
     font-weight: 600;
     font-style: italic;
+    padding: 7px;
+    border-radius: 5px 0;
 }
 
 .gameboard {
@@ -118,6 +130,5 @@ button:hover {
 
 [id^=gameBox]:hover {
     cursor: pointer;
-    background-color: lightgrey;
 }
 
